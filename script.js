@@ -12,7 +12,7 @@ function createGrid(numberPerRow) {
       if (i % rowBreaker === 0) {
         square.style.cssText = "border: 0; height: 0; width: 100%";
       } else {
-        square.style.cssText = "border: 0.3px solid black; flex: 1; aspect-ratio: 1/1; width: 16px;";
+        square.style.cssText = "border: 0.3px  solid gray; flex: 1; aspect-ratio: 1/1; width: 16px;";
       }
   
       container.appendChild(square);
@@ -29,5 +29,12 @@ function createGrid(numberPerRow) {
     this.style.background = "black";
   }
   
-  createGrid(32);
+const newBoard = document.querySelector('#newBoardBtn');
+
+newBoard.addEventListener('click', function(e){
+    let input = prompt("Please enter size of board, up to a maximum of 100.");
+    createGrid(input);
+})
+
+//   createGrid(64);
 
