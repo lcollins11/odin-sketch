@@ -1,11 +1,33 @@
-const container = document.querySelector('#container');
 
-let gridSize = 16;
 
-for(let i = 0; i <squareQty*16; i++){
-    let square = document.createElement('div');
-    square.classList.add('square');
-    container.appendChild(square);
-}
+function createGrid(numberPerRow) {
+    const container = document.querySelector('#container');
+    const total = (numberPerRow * numberPerRow) + numberPerRow;
+    const rowBreaker = numberPerRow + 1;
+  
+    for (let i = 1; i < total; i++) {
+      const square = document.createElement('div');
+      square.classList.add('square');
+  
+      if (i % rowBreaker === 0) {
+        square.style.cssText = "border: 0; height: 0; width: 100%";
+      } else {
+        square.style.cssText = "border: 0.3px solid black; flex: 1; aspect-ratio: 1/1; width: 16px;";
+      }
+  
+      container.appendChild(square);
+    }
 
-container.style.width = width;
+    let squares = document.querySelectorAll('.square');
+    squares.forEach(square => {
+      square.addEventListener('mouseover', fillSquare);
+    })
+
+  }
+
+  function fillSquare(){
+    this.style.background = "black";
+  }
+  
+  createGrid(32);
+
