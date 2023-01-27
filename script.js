@@ -1,11 +1,18 @@
+//page sections
+const container = document.querySelector('#container');
 
 
-function createGrid(numberPerRow) {
-    const container = document.querySelector('#container');
-    const total = (numberPerRow * numberPerRow) + numberPerRow;
-    const rowBreaker = numberPerRow + 1;
+//buttons
+const newBoard = document.querySelector('#newBoardBtn');
+
+
+function createGrid() {
+    let input = parseInt(prompt("Please enter a size, maximum allowed is 100."));
+    deleteBoard();
+    const total = (input * input) + input;
+    const rowBreaker = input + 1;
   
-    for (let i = 1; i < total; i++) {
+    for (let i = 0; i < total; i++) {
       const square = document.createElement('div');
       square.classList.add('square');
   
@@ -22,19 +29,17 @@ function createGrid(numberPerRow) {
     squares.forEach(square => {
       square.addEventListener('mouseover', fillSquare);
     })
-
   }
 
   function fillSquare(){
     this.style.background = "black";
   }
   
-const newBoard = document.querySelector('#newBoardBtn');
 
-newBoard.addEventListener('click', function(e){
-    let input = prompt("Please enter size of board, up to a maximum of 100.");
-    createGrid(input);
-})
+newBoard.addEventListener('click', createGrid);
 
-//   createGrid(64);
+
+function deleteBoard() {
+    container.innerHTML = '';
+}
 
